@@ -21,12 +21,11 @@ public class TestBot extends TelegramLongPollingBot {
     }
 
     public String getBotUsername() {
-        return "chgkbot";
+        return "gecec_chgkbot";
     }
 
     public String getBotToken() {
-
-        return "123456789:qwertchkgnbotyuioplkjhgfdsazxcvbnm";
+        return "402235016:AAE7wE4vbh1M0MjGcrcse2rQGlXnf6OaHhQ";
     }
 
     public void onClosing() {
