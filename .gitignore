@@ -149,7 +149,6 @@ Session.vim
 .netrwhist
 *~
 
-application.properties
 logback_debug.xml
 
 node_modules/
