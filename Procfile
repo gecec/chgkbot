@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/chgkbot-1.0-SNAPSHOT-jar-with-dependencies.jar
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/chgkbot-1.0-SNAPSHOT.jar
