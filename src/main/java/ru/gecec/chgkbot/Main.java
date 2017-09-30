@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
+import ru.gecec.chgkbot.bots.CommandsHandler;
 
 @SpringBootApplication
 public class Main implements CommandLineRunner {
@@ -18,10 +19,10 @@ public class Main implements CommandLineRunner {
     public void run(String... args) throws Exception {
         ApiContextInitializer.init();
 
-        TelegramBotsApi botsApi = new TelegramBotsApi();
+        TelegramBotsApi botsApi =  new TelegramBotsApi();
 
         try {
-            botsApi.registerBot(new TestBot());
+            botsApi.registerBot(new CommandsHandler());
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
