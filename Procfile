@@ -1,1 +1,1 @@
-web: java -jar target/chgkbot-1.0-SNAPSHOT-jar-with-dependencies.jar
+web: java -Dserver.port=$PORT -jar target/chgkbot-1.0-SNAPSHOT-jar-with-dependencies.jar
