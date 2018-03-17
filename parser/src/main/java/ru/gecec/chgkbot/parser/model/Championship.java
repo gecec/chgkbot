@@ -1,8 +1,13 @@
 package ru.gecec.chgkbot.parser.model;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.List;
 
 public class Championship {
+    @Id
+    private String id;
+
     private String name;
     private String type;
     private String date;
@@ -16,6 +21,14 @@ public class Championship {
 
     public Championship() {
 
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

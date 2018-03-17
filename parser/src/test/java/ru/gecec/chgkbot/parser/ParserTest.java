@@ -1,20 +1,27 @@
 package ru.gecec.chgkbot.parser;
 
-import com.google.common.annotations.VisibleForTesting;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ru.gecec.chgkbot.parser.model.Championship;
+import ru.gecec.chgkbot.parser.storage.ChampionshipRepository;
+import ru.gecec.chgkbot.parser.storage.MongoConfiguration;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.List;
+import java.util.UUID;
 
-import static org.junit.Assert.assertEquals;
-
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {MongoConfiguration.class})
 public class ParserTest {
+    @Autowired
+    ChampionshipRepository repository;
+
     @Test
     public void testHtmlParse(){
         Document html = null;
@@ -43,5 +50,20 @@ public class ParserTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void testSaveToMongo(){
+        DbInfoParser parser = new DbInfoParser();
+        Championship result = null;
+        try {
+            result = parser.parse("D:\\PROJECTS\\chgkbot\\base\\db\\baza\\12koll10.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        result.setId(UUID.randomUUID().toString());
+
+        repository.save(result);
     }
 }
